@@ -19,12 +19,12 @@ contract ProntuarioDistribuido {
     uint idMedico = 0;
     uint idPaciente = 0;
 
-    public function cadastrarNovoMedico(address medico){
+    function cadastrarNovoMedico(address medico) public {
         listaMedicos[idMedico] = medico;
         idMedico++;
     }
-    
-    public function cadastrarNovoPaciente(address paciente){
+
+    function cadastrarNovoPaciente(address paciente) public {
         listaPacientes[idPaciente] = paciente;
         idPaciente++;
     }
