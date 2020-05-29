@@ -22,8 +22,8 @@ contract ProntuarioDistribuido {
         bool exist;
     }
 
-    mapping(address => Medico) public listaMedicos;
-    mapping(address => Paciente) public listaPacientes;
+    mapping(address => Medico) private listaMedicos;
+    mapping(address => Paciente) private listaPacientes;
     mapping(uint => Prontuario) prontuarios;
 
     uint idProntuario = 0;
@@ -51,7 +51,7 @@ contract ProntuarioDistribuido {
             listaPacientes[paciente].exist = true;
         }
     }
-    
+
     function getPaciente(address paciente)public view returns (bool aux){
         bool medicoExiste = getMedico(msg.sender);
         if(medicoExiste){
@@ -59,7 +59,7 @@ contract ProntuarioDistribuido {
             return aux;
         }
     }
-    
+
     function getMedico(address medico)private view returns (bool aux){
         aux = listaPacientes[medico].exist;
         return aux;
@@ -77,7 +77,7 @@ contract ProntuarioDistribuido {
     function getProntuario(uint id) public view returns (Prontuario memory){
         bool medicoExiste = getMedico(msg.sender);
         if(medicoExiste){
-            return prontuarios[id];    
+            return prontuarios[id];
         }
     }
 }
