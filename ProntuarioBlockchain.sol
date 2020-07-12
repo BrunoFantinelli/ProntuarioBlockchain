@@ -23,14 +23,9 @@ contract ProntuarioDistribuido {
     }
     
 
-<<<<<<< HEAD
 
     mapping(uint => Role) Roles;
     mapping(address => Usuarios) ListaUsuarios;
-=======
-    mapping(address => Medico) private listaMedicos;
-    mapping(address => Paciente) private listaPacientes;
->>>>>>> 4428bd089579c6efff8817a0d94892924bc7befe
     mapping(uint => Prontuario) prontuarios;
 
     uint idProntuario = 0;
@@ -65,7 +60,6 @@ contract ProntuarioDistribuido {
         
     }
 
-<<<<<<< HEAD
     
     function newRole(string memory nome) public onlyAdmin {
         Roles[idRoles].nome = nome;
@@ -75,19 +69,6 @@ contract ProntuarioDistribuido {
     
     function deleteRole(uint id) public onlyAdmin {
         Roles[id].exist = false;   
-=======
-    function getPaciente(address paciente)public view returns (bool aux){
-        bool medicoExiste = getMedico(msg.sender);
-        if(medicoExiste){
-            aux = listaPacientes[paciente].exist;
-            return aux;
-        }
-    }
-
-    function getMedico(address medico)private view returns (bool aux){
-        aux = listaPacientes[medico].exist;
-        return aux;
->>>>>>> 4428bd089579c6efff8817a0d94892924bc7befe
     }
 
 
@@ -114,15 +95,7 @@ contract ProntuarioDistribuido {
         }
     }
 
-<<<<<<< HEAD
     function getProntuario(uint id) public MedicoAndAdmin view returns (Prontuario memory){
             return prontuarios[id];
-=======
-    function getProntuario(uint id) public view returns (Prontuario memory){
-        bool medicoExiste = getMedico(msg.sender);
-        if(medicoExiste){
-            return prontuarios[id];
-        }
->>>>>>> 4428bd089579c6efff8817a0d94892924bc7befe
     }
 }
